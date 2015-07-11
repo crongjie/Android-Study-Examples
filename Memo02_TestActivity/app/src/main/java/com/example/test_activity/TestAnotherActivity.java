@@ -24,7 +24,7 @@ public class TestAnotherActivity extends ActionBarActivity {
         //Assign the EditText(Text Field) defined in layout XML to variable tf_input
         tf_input  = (EditText) findViewById(R.id.tf_input);
 
-        // Assign the Button defined in layout XML to variable btn_test
+        // Assign the Button defined in layout XML to variable btn_ok
         btn_ok = (Button) findViewById(R.id.btn_ok);
 
 
@@ -34,14 +34,15 @@ public class TestAnotherActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 Intent result = getIntent();
+                //Put input text to result intent
                 result.putExtra("inputText", tf_input.getText().toString());
                 setResult(Activity.RESULT_OK, result);
-
+                //Exit this Activity
                 finish();
             }
         });
 
-
+        //Set input text field's value passed from MainActivity
         Intent intent_current = getIntent();
         tf_input.setText(intent_current.getStringExtra("inputText"));
     }

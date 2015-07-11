@@ -32,8 +32,10 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 Intent intent_another_activity = new Intent(currentActivity, TestAnotherActivity.class);
-                intent_another_activity.putExtra("inputText", txt_result.getText());
 
+                //Send current txt_result's value to new Activity(TestAnotherActivity)
+                intent_another_activity.putExtra("inputText", txt_result.getText());
+                //Start Activity
                 startActivityForResult(intent_another_activity, 0);
 
 
@@ -44,9 +46,8 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (resultCode == Activity.RESULT_OK) {
-
+            //get input text from TestAnotherActivity
             String input_Text = data.getStringExtra("inputText");
             txt_result.setText(input_Text);
         }
